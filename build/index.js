@@ -151,6 +151,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(1);
@@ -205,7 +207,7 @@ var Slideshow = function (_Component) {
     value: function componentDidMount() {
       if (this.state.autoplay) this.runSlideShow();
 
-      if (this.state.enableKeyboard) typeof document !== "object" && document.addEventListener('keydown', this.handleKeyboard);
+      if (this.state.enableKeyboard) (typeof document === 'undefined' ? 'undefined' : _typeof(document)) !== "object" && document.addEventListener('keydown', this.handleKeyboard);
     }
   }, {
     key: 'handleKeyboard',
@@ -224,7 +226,7 @@ var Slideshow = function (_Component) {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       clearInterval(this.state.intervalId);
-      document.removeEventListener('keydown', this.handleKeyboard);
+      (typeof document === 'undefined' ? 'undefined' : _typeof(document)) !== "object" && document.removeEventListener('keydown', this.handleKeyboard);
     }
   }, {
     key: 'autoSlideshow',
@@ -386,7 +388,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "html,\r\nbody {\r\n  padding: 0;\r\n  margin: 0;\r\n  background: #000;\r\n}\r\n\r\n.slideshow-container {\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.slides {\r\n  position: relative;\r\n  height: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n  list-style-type: none;\r\n  overflow: hidden;\r\n}\r\n\r\n.slide {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  opacity: 0;\r\n  z-index: 1;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  background-position: center;\r\n}\r\n\r\n.showing-fade {\r\n  opacity: 1;\r\n  z-index: 2;\r\n  animation-duration: 1s;\r\n  animation-name: slide-fade;\r\n}\r\n\r\n@keyframes slide-fade {\r\n  from {\r\n    opacity: 0;\r\n  }\r\n\r\n  to {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n.showing-right {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-right;\r\n}\r\n\r\n@keyframes slide-right {\r\n  from {\r\n    left: -50%;\r\n  }\r\n\r\n  to {\r\n    left: 0;\r\n  }\r\n}\r\n\r\n.showing-left {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-left;\r\n}\r\n\r\n@keyframes slide-left {\r\n  from {\r\n    left: 100%;\r\n  }\r\n\r\n  to {\r\n    left: 0;\r\n  }\r\n}\r\n\r\n.showing-top {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-top;\r\n}\r\n\r\n@keyframes slide-top {\r\n  from {\r\n    top: 100%;\r\n  }\r\n\r\n  to {\r\n    top: 0;\r\n  }\r\n}\r\n\r\n.showing-bottom {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-bottom;\r\n}\r\n\r\n@keyframes slide-bottom {\r\n  from {\r\n    top: -100%;\r\n  }\r\n\r\n  to {\r\n    top: 0;\r\n  }\r\n}\r\n\r\n.showing-bounce-left {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-bounce-left;\r\n}\r\n\r\n@keyframes slide-bounce-left {\r\n  0% {\r\n    left: 100%;\r\n  }\r\n  50% {\r\n    left: -20%;\r\n  }\r\n  100% {\r\n    left: 0;\r\n  }\r\n}\r\n\r\n.showing-bounce-right {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-bounce-right;\r\n}\r\n\r\n@keyframes slide-bounce-right {\r\n  0% {\r\n    left: -100%;\r\n  }\r\n  50% {\r\n    left: 20%;\r\n  }\r\n  100% {\r\n    left: 0;\r\n  }\r\n}\r\n\r\n.show-index.is-text {\r\n  color: #fff;\r\n  position: absolute;\r\n  bottom: 0;\r\n  z-index: 100;\r\n  left: 50%;\r\n  font-size: 28px;\r\n  font-family: 'Slabo 27px', serif;\r\n}\r\n\r\n.show-index.is-dot {\r\n  color: #fff;\r\n  position: absolute;\r\n  bottom: 0;\r\n  z-index: 100;\r\n  left: 50%;\r\n  font-size: 28px;\r\n  font-family: 'Slabo 27px', serif;\r\n  display: flex;\r\n}\r\n\r\n.show-index.is-dot .dot {\r\n  width: 10px;\r\n  height: 10px;\r\n  margin: 0 3px 3rem 3px;\r\n  background-color: white;\r\n  border-radius: 50%;\r\n  opacity: 0.5;\r\n}\r\n\r\n.show-index.is-dot .dot.is-active {\r\n  opacity: 1;\r\n}\r\n\r\nbutton:focus {\r\n  outline: none;\r\n}\r\n\r\n.btn-arrow {\r\n  color: transparent;\r\n  display: block;\r\n  font-size: 5px;\r\n  line-height: 0;\r\n  -moz-transition: all 0.3s;\r\n  -o-transition: all 0.3s;\r\n  -webkit-transition: all 0.3s;\r\n  transition: all 0.3s;\r\n  position: absolute;\r\n  top: 50%;\r\n  z-index: 10;\r\n  cursor: pointer;\r\n  height: 50px;\r\n  width: 50px;\r\n  border-radius: 50%;\r\n  padding: 5px;\r\n  z-index: 10000;\r\n}\r\n\r\n.btn-arrow:hover,\r\n.btn-arrow:focus {\r\n  background: rgba(256, 256, 256, 0.1);\r\n}\r\n\r\n.btn-arrow:hover::before,\r\n.btn-arrow:hover::after,\r\n.btn-arrow:focus::before,\r\n.btn-arrow:focus::after {\r\n  background: rgba(256, 256, 256, 0.5);\r\n}\r\n\r\n.btn-arrow::before {\r\n  content: '';\r\n  display: block;\r\n  background: rgba(256, 256, 256, 0.6);\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 6em;\r\n  height: 2em;\r\n}\r\n\r\n.btn-arrow::after {\r\n  content: '';\r\n  display: block;\r\n  background: rgba(256, 256, 256, 0.6);\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 2em;\r\n  height: 6em;\r\n}\r\n.btn-arrow.btn-arrow-left {\r\n  -moz-transform: rotate(-45deg);\r\n  -ms-transform: rotate(-45deg);\r\n  -webkit-transform: rotate(-45deg);\r\n  transform: rotate(-45deg);\r\n  left: 5%;\r\n}\r\n.btn-arrow.btn-arrow-left::before,\r\n.btn-arrow.btn-arrow-left::after {\r\n  top: 18px;\r\n  left: 18px;\r\n}\r\n.btn-arrow.btn-arrow-right {\r\n  -moz-transform: rotate(135deg);\r\n  -ms-transform: rotate(135deg);\r\n  -webkit-transform: rotate(135deg);\r\n  transform: rotate(135deg);\r\n  right: 5%;\r\n}\r\n.btn-arrow.btn-arrow-right::before,\r\n.btn-arrow.btn-arrow-right::after {\r\n  top: 18px;\r\n  left: 18px;\r\n}\r\n", ""]);
+exports.push([module.i, ".slideshow-container {\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n\r\n.slides {\r\n  position: relative;\r\n  height: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n  list-style-type: none;\r\n  overflow: hidden;\r\n}\r\n\r\n.slide {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  opacity: 0;\r\n  z-index: 1;\r\n  padding: 0;\r\n  margin: 0;\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  background-position: center;\r\n}\r\n\r\n.showing-none {\r\n  opacity: 1;\r\n  z-index: 2;\r\n}\r\n\r\n.showing-fade {\r\n  opacity: 1;\r\n  z-index: 2;\r\n  animation-duration: 1s;\r\n  animation-name: slide-fade;\r\n}\r\n\r\n@keyframes slide-fade {\r\n  from {\r\n    opacity: 0;\r\n  }\r\n\r\n  to {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n.showing-right {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-right;\r\n}\r\n\r\n@keyframes slide-right {\r\n  from {\r\n    left: -50%;\r\n  }\r\n\r\n  to {\r\n    left: 0;\r\n  }\r\n}\r\n\r\n.showing-left {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-left;\r\n}\r\n\r\n@keyframes slide-left {\r\n  from {\r\n    left: 100%;\r\n  }\r\n\r\n  to {\r\n    left: 0;\r\n  }\r\n}\r\n\r\n.showing-top {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-top;\r\n}\r\n\r\n@keyframes slide-top {\r\n  from {\r\n    top: 100%;\r\n  }\r\n\r\n  to {\r\n    top: 0;\r\n  }\r\n}\r\n\r\n.showing-bottom {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-bottom;\r\n}\r\n\r\n@keyframes slide-bottom {\r\n  from {\r\n    top: -100%;\r\n  }\r\n\r\n  to {\r\n    top: 0;\r\n  }\r\n}\r\n\r\n.showing-bounce-left {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-bounce-left;\r\n}\r\n\r\n@keyframes slide-bounce-left {\r\n  0% {\r\n    left: 100%;\r\n  }\r\n  50% {\r\n    left: -20%;\r\n  }\r\n  100% {\r\n    left: 0;\r\n  }\r\n}\r\n\r\n.showing-bounce-right {\r\n  opacity: 1;\r\n  animation-duration: 1s;\r\n  animation-name: slide-bounce-right;\r\n}\r\n\r\n@keyframes slide-bounce-right {\r\n  0% {\r\n    left: -100%;\r\n  }\r\n  50% {\r\n    left: 20%;\r\n  }\r\n  100% {\r\n    left: 0;\r\n  }\r\n}\r\n\r\n.show-index.is-text {\r\n  color: #fff;\r\n  position: absolute;\r\n  bottom: 0;\r\n  z-index: 100;\r\n  left: 50%;\r\n  font-size: 28px;\r\n  font-family: 'Slabo 27px', serif;\r\n}\r\n\r\n.show-index.is-dot {\r\n  color: #fff;\r\n  position: absolute;\r\n  bottom: 0;\r\n  z-index: 100;\r\n  left: 50%;\r\n  font-size: 28px;\r\n  font-family: 'Slabo 27px', serif;\r\n  display: flex;\r\n}\r\n\r\n.show-index.is-dot .dot {\r\n  width: 10px;\r\n  height: 10px;\r\n  margin: 0 3px 3rem 3px;\r\n  background-color: white;\r\n  border-radius: 50%;\r\n  opacity: 0.5;\r\n}\r\n\r\n.show-index.is-dot .dot.is-active {\r\n  opacity: 1;\r\n}\r\n\r\n.slideshow-container button:focus {\r\n  outline: none;\r\n}\r\n\r\n.btn-arrow {\r\n  color: transparent;\r\n  display: block;\r\n  font-size: 5px;\r\n  line-height: 0;\r\n  -moz-transition: all 0.3s;\r\n  -o-transition: all 0.3s;\r\n  -webkit-transition: all 0.3s;\r\n  transition: all 0.3s;\r\n  position: absolute;\r\n  top: 50%;\r\n  z-index: 10;\r\n  cursor: pointer;\r\n  height: 50px;\r\n  width: 50px;\r\n  border-radius: 50%;\r\n  padding: 5px;\r\n  z-index: 10000;\r\n}\r\n\r\n.btn-arrow:hover,\r\n.btn-arrow:focus {\r\n  background: rgba(256, 256, 256, 0.1);\r\n}\r\n\r\n.btn-arrow:hover::before,\r\n.btn-arrow:hover::after,\r\n.btn-arrow:focus::before,\r\n.btn-arrow:focus::after {\r\n  background: rgba(256, 256, 256, 0.5);\r\n}\r\n\r\n.btn-arrow::before {\r\n  content: '';\r\n  display: block;\r\n  background: rgba(256, 256, 256, 0.6);\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 6em;\r\n  height: 2em;\r\n}\r\n\r\n.btn-arrow::after {\r\n  content: '';\r\n  display: block;\r\n  background: rgba(256, 256, 256, 0.6);\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 2em;\r\n  height: 6em;\r\n}\r\n.btn-arrow.btn-arrow-left {\r\n  -moz-transform: rotate(-45deg);\r\n  -ms-transform: rotate(-45deg);\r\n  -webkit-transform: rotate(-45deg);\r\n  transform: rotate(-45deg);\r\n  left: 5%;\r\n}\r\n.btn-arrow.btn-arrow-left::before,\r\n.btn-arrow.btn-arrow-left::after {\r\n  top: 18px;\r\n  left: 18px;\r\n}\r\n.btn-arrow.btn-arrow-right {\r\n  -moz-transform: rotate(135deg);\r\n  -ms-transform: rotate(135deg);\r\n  -webkit-transform: rotate(135deg);\r\n  transform: rotate(135deg);\r\n  right: 5%;\r\n}\r\n.btn-arrow.btn-arrow-right::before,\r\n.btn-arrow.btn-arrow-right::after {\r\n  top: 18px;\r\n  left: 18px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -499,7 +501,7 @@ var isOldIE = memoize(function () {
 	// Tests for existence of standard globals is to allow style-loader
 	// to operate correctly into non-standard environments
 	// @see https://github.com/webpack-contrib/style-loader/issues/177
-	return typeof window !== "undefined" && window && document && document.all && !window.atob;
+	return window && document && document.all && !window.atob;
 });
 
 var getElement = (function (fn) {
@@ -513,7 +515,7 @@ var getElement = (function (fn) {
 		return memo[selector]
 	};
 })(function (target) {
-	return typeof document !== "object" && document.querySelector(target)
+	return document.querySelector(target)
 });
 
 var singleton = null;
@@ -655,7 +657,7 @@ function removeStyleElement (style) {
 }
 
 function createStyleElement (options) {
-	var style = typeof document !== "object" && document.createElement("style");
+	var style = document.createElement("style");
 
 	options.attrs.type = "text/css";
 
@@ -666,7 +668,7 @@ function createStyleElement (options) {
 }
 
 function createLinkElement (options) {
-	var link = typeof document !== "object" && document.createElement("link");
+	var link = document.createElement("link");
 
 	options.attrs.type = "text/css";
 	options.attrs.rel = "stylesheet";
@@ -769,7 +771,7 @@ function applyToSingletonTag (style, index, remove, obj) {
 	if (style.styleSheet) {
 		style.styleSheet.cssText = replaceText(index, css);
 	} else {
-		var cssNode = typeof document !== "object" && document.createTextNode(css);
+		var cssNode = document.createTextNode(css);
 		var childNodes = style.childNodes;
 
 		if (childNodes[index]) style.removeChild(childNodes[index]);
@@ -797,7 +799,7 @@ function applyToTag (style, obj) {
 			style.removeChild(style.firstChild);
 		}
 
-		style.appendChild(typeof document !== "object" && document.createTextNode(css));
+		style.appendChild(document.createTextNode(css));
 	}
 }
 
