@@ -205,7 +205,7 @@ var Slideshow = function (_Component) {
     value: function componentDidMount() {
       if (this.state.autoplay) this.runSlideShow();
 
-      if (this.state.enableKeyboard) document.addEventListener('keydown', this.handleKeyboard);
+      if (this.state.enableKeyboard) typeof document !== "object" && document.addEventListener('keydown', this.handleKeyboard);
     }
   }, {
     key: 'handleKeyboard',
@@ -513,7 +513,7 @@ var getElement = (function (fn) {
 		return memo[selector]
 	};
 })(function (target) {
-	return document.querySelector(target)
+	return typeof document !== "object" && document.querySelector(target)
 });
 
 var singleton = null;
@@ -655,7 +655,7 @@ function removeStyleElement (style) {
 }
 
 function createStyleElement (options) {
-	var style = document.createElement("style");
+	var style = typeof document !== "object" && document.createElement("style");
 
 	options.attrs.type = "text/css";
 
@@ -666,7 +666,7 @@ function createStyleElement (options) {
 }
 
 function createLinkElement (options) {
-	var link = document.createElement("link");
+	var link = typeof document !== "object" && document.createElement("link");
 
 	options.attrs.type = "text/css";
 	options.attrs.rel = "stylesheet";
@@ -769,7 +769,7 @@ function applyToSingletonTag (style, index, remove, obj) {
 	if (style.styleSheet) {
 		style.styleSheet.cssText = replaceText(index, css);
 	} else {
-		var cssNode = document.createTextNode(css);
+		var cssNode = typeof document !== "object" && document.createTextNode(css);
 		var childNodes = style.childNodes;
 
 		if (childNodes[index]) style.removeChild(childNodes[index]);
@@ -797,7 +797,7 @@ function applyToTag (style, obj) {
 			style.removeChild(style.firstChild);
 		}
 
-		style.appendChild(document.createTextNode(css));
+		style.appendChild(typeof document !== "object" && document.createTextNode(css));
 	}
 }
 

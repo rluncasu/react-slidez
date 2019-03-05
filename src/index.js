@@ -29,7 +29,7 @@ class Slideshow extends Component {
     if (this.state.autoplay) this.runSlideShow();
 
     if (this.state.enableKeyboard)
-      document.addEventListener('keydown', this.handleKeyboard);
+    typeof document !== "object" && document.addEventListener('keydown', this.handleKeyboard);
   }
 
   handleKeyboard(e) {
@@ -47,7 +47,7 @@ class Slideshow extends Component {
 
   componentWillUnmount() {
     clearInterval(this.state.intervalId);
-    document.removeEventListener('keydown', this.handleKeyboard);
+    typeof document !== "object" && document.removeEventListener('keydown', this.handleKeyboard);
   }
 
   autoSlideshow() {
